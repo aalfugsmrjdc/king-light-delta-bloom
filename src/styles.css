@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", "Noto Sans SC", "WenQuanYi Zen Hei", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Figtree", "Noto Sans SC", "WenQuanYi Zen Hei", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Literata", "WenQuanYi Zen Hei", "Songti SC", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", "WenQuanYi Zen Hei Mono", ui-monospace, monospace;
+
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--bg-elevated);
+  --color-card-foreground: var(--fg);
+  --color-popover: var(--bg-elevated);
+  --color-popover-foreground: var(--fg);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--accent-fg);
+  --color-secondary: var(--bg-subtle);
+  --color-secondary-foreground: var(--fg);
+  --color-muted: var(--bg-subtle);
+  --color-muted-foreground: var(--fg-muted);
+  --color-accent: var(--bg-subtle);
+  --color-accent-foreground: var(--fg);
+  --color-destructive: var(--danger);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
+  --color-sidebar: var(--bg-elevated);
+  --color-sidebar-foreground: var(--fg);
+  --color-success: var(--success);
+  --color-warning: var(--warn);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+}
+
+:root,
+[data-theme="night"] {
+  --bg: #0f1117;
+  --bg-elevated: #16161e;
+  --bg-subtle: #1c1d28;
+  --fg: #c8cde0;
+  --fg-muted: #8b91a8;
+  --accent: #7aa2f7;
+  --accent-fg: #101218;
+  --danger: #f7768e;
+  --success: #9ece6a;
+  --warn: #e0af68;
+  --border: color-mix(in oklab, var(--fg) 12%, transparent);
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="paper"] {
+  --bg: #f4f1ea;
+  --bg-elevated: #fffcf7;
+  --bg-subtle: #ebe6dc;
+  --fg: #1c1917;
+  --fg-muted: #6b645c;
+  --accent: #1d4ed8;
+  --accent-fg: #f8fafc;
+  --danger: #b91c1c;
+  --success: #047857;
+  --warn: #b45309;
+  --border: color-mix(in oklab, var(--fg) 12%, transparent);
+  --shadow-border: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="forest"] {
+  --bg: #14211c;
+  --bg-elevated: #1b2d26;
+  --bg-subtle: #243b31;
+  --fg: #d7eee4;
+  --fg-muted: #8fb3a4;
+  --accent: #34d399;
+  --accent-fg: #052e22;
+  --danger: #f87171;
+  --success: #6ee7b7;
+  --warn: #fbbf24;
+  --border: color-mix(in oklab, var(--fg) 12%, transparent);
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="ocean"] {
+  --bg: #0b1220;
+  --bg-elevated: #111a2e;
+  --bg-subtle: #1a2740;
+  --fg: #e2e8f0;
+  --fg-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-fg: #082f49;
+  --danger: #fb7185;
+  --success: #34d399;
+  --warn: #fbbf24;
+  --border: color-mix(in oklab, var(--fg) 12%, transparent);
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.mixia-editor {
+  outline: none;
+  min-height: 60vh;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: inherit;
+}
+
+.mixia-editor > :first-child {
+  margin-top: 0;
+}
+
+.mixia-editor h1 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 0.8em;
+}
+
+.mixia-editor h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 1.4em 0 0.55em;
+}
+
+.mixia-editor h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin: 1.2em 0 0.4em;
+}
+
+.mixia-editor p {
+  margin: 0.55em 0;
+}
+
+.mixia-editor a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mixia-editor blockquote {
+  border-left: 3px solid color-mix(in oklab, var(--accent) 55%, transparent);
+  margin: 1em 0;
+  padding: 0.15em 0 0.15em 1em;
+  color: var(--fg-muted);
+}
+
+.mixia-editor code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: color-mix(in oklab, var(--fg) 8%, transparent);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+.mixia-editor pre {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  background: color-mix(in oklab, var(--fg) 6%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  margin: 1em 0;
+}
+
+.mixia-editor pre code {
+  background: none;
+  padding: 0;
+}
+
+.mixia-editor ul,
+.mixia-editor ol {
+  padding-left: 1.35rem;
+  margin: 0.5em 0;
+}
+
+.mixia-editor li {
+  margin: 0.2em 0;
+}
+
+.mixia-editor ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+}
+
+.mixia-editor ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.mixia-editor ul[data-type="taskList"] li label {
+  margin-top: 0.4em;
+}
+
+.mixia-editor ul[data-type="taskList"] li div {
+  flex: 1;
+}
+
+.mixia-editor mark {
+  border-radius: 2px;
+  padding: 0 0.1em;
+}
+
+.mixia-editor hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5em 0;
+}
+
+.mixia-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--fg-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  header,
+  aside,
+  .mixia-editor ~ * {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
